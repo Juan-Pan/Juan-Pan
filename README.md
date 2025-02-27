@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="foticos/i_wish_algebraic_topology.jpg" alt="imagen_de_prueba" width="300">
+  <img src="imagenes/i_wish_algebraic_topology.jpg" alt="imagen_de_prueba" width="300">
 </p>
 
 <!---
