@@ -15,7 +15,7 @@
 - A system engineering stundent
 - Fifth semester at the Technological University of Pereira
 
-<br><br>
+<br>
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif"><br><br>
 
@@ -92,13 +92,13 @@
 <!-- Snake start-->
 
 <p align="center">
-  <img src="https://github.com/tu-usuario-github/tu-usuario-github/blob/output/github-contribution-grid-snake.svg" />
+  <img src="https://github.com/Juan-Pan/Juan-Pan/blob/output/github-contribution-grid-snake.svg" />
 </p>
 
 <br>
 <br>
 
-## <b> Contact with me</b><img src="https://user-images.githubusercontent.com/74038190/216120981-b9507c36-0e04-4469-8e27-c99271b45ba5.png" width ="80">
+## <b> Contact with me</b><img src="https://user-images.githubusercontent.com/74038190/216120981-b9507c36-0e04-4469-8e27-c99271b45ba5.png" width ="40">
 
 <br>
 <div align='left'>
