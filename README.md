@@ -72,12 +72,12 @@
   <table align="center">
     <tr border="none">
       <td width="50%" align="center">
-        <img align="center" src="https://github-readme-stats.vercel.app/api?username=tu-usuario-github&theme=dark&show_icons=true&count_private=true" />
+        <img align="center" src="https://github-readme-stats.vercel.app/api?username=Juan-Pan&theme=dark&show_icons=true&count_private=true" />
         <br><br>
-        <img title="🔥 GitHub Streak Stats" alt="Streak Stats" src="https://github-readme-streak-stats.herokuapp.com/?user=tu-usuario-github&theme=dark&hide_border=false" />
+        <img title="🔥 GitHub Streak Stats" alt="Streak Stats" src="https://github-readme-streak-stats.herokuapp.com/?user=Juan-Pan&theme=dark&hide_border=false" />
       </td>
       <td width="50%" align="center">
-        <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=tu-usuario-github&theme=dark&hide_border=false&langs_count=10"/>
+        <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Juan-Pan&theme=dark&hide_border=false&langs_count=10"/>
       </td>
     </tr>
   </table>
