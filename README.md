@@ -2,7 +2,7 @@
 <!--  -->
 <p align="center">
   <a href="https://github.com/DenverCoder1/readme-typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=Time+New+Roman&color=cyan&size=25&center=true&vCenter=true&width=600&height=100&lines=Juliana+Es+FEA;Juan+David+Lopez+Tapasco++;Enthusiast+About+Mathematics,;System+Engineering+Student,;Colombia">
+    <img src="https://readme-typing-svg.herokuapp.com?font=Time+New+Roman&color=cyan&size=25&center=true&vCenter=true&width=600&height=100&lines=Juan+David+Lopez+Tapasco++;Enthusiast+About+Mathematics,;System+Engineering+Student,;Colombia">
   </a>
 </p>
 
@@ -26,6 +26,7 @@
 <p align="center">
 
 - **Languages**:
+
   ![C](https://img.shields.io/badge/C%20-%232370ED.svg?style=for-the-badge&logo=c&logoColor=white)
   ![C++](https://img.shields.io/badge/C++%20-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
   ![Python](https://img.shields.io/badge/Python%20-%2314354C.svg?style=for-the-badge&logo=python&logoColor=white)
@@ -65,25 +66,24 @@
 
 <br>
 
-<!--- stats & Trophy (start) -->
+<!--- Stats & Trophy (start) -->
 <p align="center">
-  <!--- stats (start) -->
-<table align="center">
-<tr border="none">
-<td width="50%" align="center">
-  
-  <img  align="center"  src="https://github-readme-stats.vercel.app/api?username=1010nishant&theme=dark&show_icons=true&count_private=true" />
-  <br></br>
-  <img  title="🔥 Get streak stats for your profile at git.io/streak-stats" alt="Mark streak" src="https://github-readme-streak-stats.herokuapp.com/?user=1010nishant&theme=dark&hide_border=false" /> 
-</td>
+  <!--- Stats (start) -->
+  <table align="center">
+    <tr border="none">
+      <td width="50%" align="center">
+        <img align="center" src="https://github-readme-stats.vercel.app/api?username=tu-usuario-github&theme=dark&show_icons=true&count_private=true" />
+        <br><br>
+        <img title="🔥 GitHub Streak Stats" alt="Streak Stats" src="https://github-readme-streak-stats.herokuapp.com/?user=tu-usuario-github&theme=dark&hide_border=false" />
+      </td>
+      <td width="50%" align="center">
+        <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=tu-usuario-github&theme=dark&hide_border=false&langs_count=10"/>
+      </td>
+    </tr>
+  </table>
+</p>
+<!--- Stats & Trophy (end) -->
 
-<td width="50%" align="center">
-
-  <img  align="center"  src="https://github-readme-stats.anuraghazra1.vercel.app/api/top-langs/?username=1010nishant&theme=dark&hide_border=false&no-bg=true&no-frame=true&langs_count=10"/>
-  
-  </td>
-</tr>
-</table>
 <!--- stats (end) -->
 
 
