@@ -110,7 +110,7 @@
 <div align='left'>
 
 <p align="center">
-  <a href="https://www.instagram.com/juand.lopez7/" target="_blank">
+  <a href="https://www.instagram.com/juand.lopez7/profilecard/?igsh=MWt5NHY3NDRuaHJpcA==" target="_blank">
     <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram">
   </a>
   <a href="mailto:lopeztapasco23@gmail.com">
