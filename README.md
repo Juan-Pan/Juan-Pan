@@ -1,4 +1,4 @@
-<h1 align="center"><b>Hi , I'm Juan David </b><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35"></h1>
+<h1 align="center"><b>Hi, I'm Juan David </b><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35"></h1>
 <!--  -->
 <p align="center">
   <a href="https://github.com/DenverCoder1/readme-typing-svg">
@@ -41,7 +41,7 @@
 
 - **Softwares and Tools**:
 
-  ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+ 
   ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
   ![Google](https://img.shields.io/badge/google-%234285F4.svg?style=for-the-badge&logo=google&logoColor=white)
   ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
@@ -98,10 +98,11 @@
     <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/Juan-Pan/Juan-Pan/output/github-contribution-grid-snake.svg">
   </picture>
 </p>
-
+<!--Snake end-->
 
 <br>
 <br>
+<!--Contact with me start-->
 
 ## <img src="https://user-images.githubusercontent.com/74038190/216120981-b9507c36-0e04-4469-8e27-c99271b45ba5.png" width ="30"><b> Contact with me</b>
 
@@ -109,7 +110,7 @@
 <div align='left'>
 
 <p align="center">
-  <a href="https://www.instagram.com/juand.lopez7/" target="_blank">
+  <a href="https://www.instagram.com/juand.lopez7/profilecard/?igsh=MWt5NHY3NDRuaHJpcA==" target="_blank">
     <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram">
   </a>
   <a href="mailto:lopeztapasco23@gmail.com">
@@ -117,7 +118,7 @@
   </a>
 </p>
 </div>
-
+<!--Contact with me end -->
 <br>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
