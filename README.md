@@ -85,81 +85,34 @@
 
 <!--- stats (end) -->
 
-
-
 <br>
 <br>
 <br>
 
 <!-- Snake start-->
-<div aling='center'>
-- uses: Platane/snk@v3
-  with:
-    # github user name to read the contribution graph from (**required**)
-    # using action context var `github.repository_owner` or specified user
-    github_user_name: ${{ github.repository_owner }}
 
-    # list of files to generate.
-    # one file per line. Each output can be customized with options as query string.
-    #
-    #  supported options:
-    #  - palette:     A preset of color, one of [github, github-dark, github-light]
-    #  - color_snake: Color of the snake
-    #  - color_dots:  Coma separated list of dots color.
-    #                 The first one is 0 contribution, then it goes from the low contribution to the highest.
-    #                 Exactly 5 colors are expected.
-    outputs: |
-      dist/github-snake.svg
-      dist/github-snake-dark.svg?palette=github-dark
-      dist/ocean.gif?color_snake=orange&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
-</div >
+<p align="center">
+  <img src="https://github.com/tu-usuario-github/tu-usuario-github/blob/output/github-contribution-grid-snake.svg" />
+</p>
 
 <br>
 <br>
 
-## <b> Let's Connect..!</b><img src="https://github.com/0xAbdulKhalid/0xAbdulKhalid/raw/main/assets/mdImages/handshake.gif" width ="80">
+## <b> Contact with me</b><img src="https://user-images.githubusercontent.com/74038190/216120981-b9507c36-0e04-4469-8e27-c99271b45ba5.png" width ="80">
 
 <br>
 <div align='left'>
 
-<ul>
-
-<li>
-<a href="https://linkedin.com/in/0xabdulkhalid" target="_blank">
-<img src="https://img.shields.io/badge/linkedin:  0xabdulkhalid-%2300acee.svg?color=405DE6&style=for-the-badge&logo=linkedin&logoColor=white" alt=linkedin style="margin-bottom: 5px;"/>
-</a>
-</li>
-
-<br>
-
-<li>
-<a href="https://twitter.com/0xabdulkhalid" target="_blank">
-<img src="https://img.shields.io/badge/twitter:  0xabdulkhalid-%2300acee.svg?color=1DA1F2&style=for-the-badge&logo=twitter&logoColor=white" alt=twitter style="margin-bottom: 5px;"/>
-</a>
-</li>
-
-<br>
-
-<li>
-<a href="mailto:0xabdulkhalid@gmail.com" target="_blank">
-<img src="https://img.shields.io/badge/gmail:  0xabdulkhalid-%23EA4335.svg?style=for-the-badge&logo=gmail&logoColor=white" t=mail style="margin-bottom: 5px;" />
-</a>
-</li>
-	
-</ul>
+<p align="center">
+  <a href="https://www.instagram.com/juand.lopez7/" target="_blank">
+    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram">
+  </a>
+  <a href="mailto:lopeztapasco23@gmail.com">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail">
+  </a>
+</p>
 </div>
 
 <br>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-<br>
-<br>
-<br>
 
-<br>
-<br>
-<br>
-<br>
-
----
-
-<br>
