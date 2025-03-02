@@ -92,13 +92,17 @@
 <!-- Snake start-->
 
 <p align="center">
-  <img src="https://github.com/Juan-Pan/Juan-Pan/blob/output/github-contribution-grid-snake.svg" />
+  <picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/platane/platane/output/github-contribution-grid-snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/platane/platane/output/github-contribution-grid-snake.svg">
+  <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/platane/platane/output/github-contribution-grid-snake.svg">
+</picture>
 </p>
 
 <br>
 <br>
 
-## <b> Contact with me</b><img src="https://user-images.githubusercontent.com/74038190/216120981-b9507c36-0e04-4469-8e27-c99271b45ba5.png" width ="40">
+## <img src="https://user-images.githubusercontent.com/74038190/216120981-b9507c36-0e04-4469-8e27-c99271b45ba5.png" width ="30"><b> Contact with me</b>
 
 <br>
 <div align='left'>
