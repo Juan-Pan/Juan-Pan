@@ -1,4 +1,4 @@
-<h1 align="center"><b>Hi , I'm Juan David </b><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35"></h1>
+<h1 align="center"><b>Hi, I'm Juan David </b><img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="35"></h1>
 <!--  -->
 <p align="center">
   <a href="https://github.com/DenverCoder1/readme-typing-svg">
@@ -98,11 +98,11 @@
     <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/Juan-Pan/Juan-Pan/output/github-contribution-grid-snake.svg">
   </picture>
 </p>
-
+<!-- Snake end-->
 
 <br>
 <br>
-
+<!-- Contact with me start-->
 ## <img src="https://user-images.githubusercontent.com/74038190/216120981-b9507c36-0e04-4469-8e27-c99271b45ba5.png" width ="30"><b> Contact with me</b>
 
 <br>
@@ -117,7 +117,7 @@
   </a>
 </p>
 </div>
-
+<!-- Contact with me end-->
 <br>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
