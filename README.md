@@ -53,7 +53,6 @@
 <br>
 <br>
 
----
 
 <br>
 
@@ -84,7 +83,7 @@
 <br>
 
 <!-- Snake start-->
-##
+
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Juan-Pan/Juan-Pan/output/github-contribution-grid-snake-dark.svg">
@@ -93,7 +92,7 @@
   </picture>
 </p>
 <!--Snake end-->
-
+<b></b>
 <br>
 <br>
 <!--Contact with me start-->
