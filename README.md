@@ -82,10 +82,9 @@
 
 <br>
 <br>
-<br>
 
 <!-- Snake start-->
-## <img src="https://media.giphy.com/media/iY8CRBdQXODJSCERIr/giphy.gif" width="35"><b> Github Snake </b>
+##
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Juan-Pan/Juan-Pan/output/github-contribution-grid-snake-dark.svg">
@@ -96,7 +95,6 @@
 <!--Snake end-->
 
 <br>
----
 <br>
 <!--Contact with me start-->
 
