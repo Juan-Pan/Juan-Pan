@@ -71,7 +71,7 @@
         <img title="🔥 GitHub Streak Stats" alt="Streak Stats" src="https://github-readme-streak-stats.herokuapp.com/?user=Juan-Pan&theme=dark&hide_border=false" />
       </td>
       <td width="50%" align="center">
-        <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Juan-pan&count_private=true&theme=dark&hide_border=false&langs_count=10"/>
+        <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Juan-Pan&count_private=true&theme=dark&hide_border=false&langs_count=10"/>
       </td>
     </tr>
   </table>
