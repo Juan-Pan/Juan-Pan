@@ -12,8 +12,8 @@
 
 <br>
 
-- A system engineering stundent
-- Fifth semester at the Technological University of Pereira
+- A system engineering student
+- sixth semester at the Technological University of Pereira
 
 <br>
 
