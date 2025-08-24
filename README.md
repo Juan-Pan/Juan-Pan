@@ -13,7 +13,7 @@
 <br>
 
 - A system engineering student
-- sixth semester at the Technological University of Pereira
+- Sixth semester at the Technological University of Pereira
 
 <br>
 
