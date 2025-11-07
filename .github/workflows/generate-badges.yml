@@ -14,93 +14,62 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: |
-          pip install requests pygithub
-
-      - name: Generate stats badges
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_USERNAME: ${{ github.repository_owner }}
-        run: |
-          python3 << 'EOFPYTHON'
-          import os
-          import requests
-          from datetime import datetime, timedelta
-          from github import Github
-          import json
-
-          username = os.environ['GITHUB_USERNAME']
-          token = os.environ['GITHUB_TOKEN']
-          g = Github(token)
-          user = g.get_user(username)
-
-          # Fetch user stats
-          total_stars = sum([repo.stargazers_count for repo in user.get_repos()])
-          total_commits = 0
-          total_prs = 0
-          total_issues = 0
-          
-          # Get contribution stats (approximate from recent activity)
-          repos = list(user.get_repos(affiliation='owner'))
-          for repo in repos[:20]:  # limit to avoid rate limits
-              try:
-                  commits = repo.get_commits(author=user, since=datetime.now() - timedelta(days=365))
-                  total_commits += commits.totalCount
-              except:
-                  pass
-
-          # Download pre-rendered badges from reliable sources
-          os.makedirs('dist', exist_ok=True)
-          
-          # Use github-readme-stats (vercel) with cache-busting
-          timestamp = int(datetime.now().timestamp())
-          
-          stats_url = f"https://github-readme-stats.vercel.app/api?username={username}&theme=dark&show_icons=true&count_private=true&include_all_commits=true&cache_seconds=1800&t={timestamp}"
-          streak_url = f"https://github-readme-streak-stats.herokuapp.com?user={username}&theme=dark&hide_border=false&date_format=M%20j%5B%2C%20Y%5D&cache_seconds=1800&t={timestamp}"
-          langs_url = f"https://github-readme-stats.vercel.app/api/top-langs/?username={username}&theme=dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact&langs_count=10&cache_seconds=1800&t={timestamp}"
-          
-          # Download with retries
-          for name, url in [('readme-stats.svg', stats_url), ('streak-stats.svg', streak_url), ('top-langs.svg', langs_url)]:
-              for attempt in range(3):
-                  try:
-                      r = requests.get(url, timeout=30)
-                      if r.status_code == 200:
-                          with open(f'dist/{name}', 'wb') as f:
-                              f.write(r.content)
-                          print(f"✓ Downloaded {name}")
-                          break
-                  except Exception as e:
-                      print(f"Attempt {attempt+1} failed for {name}: {e}")
-                      if attempt == 2:
-                          print(f"✗ Failed to download {name}")
-          
-          print("Badge generation complete!")
-          EOFPYTHON
-
       - name: Checkout output branch
-        run: |
-          git fetch origin output:output || git checkout --orphan output
-          git checkout output
+        uses: actions/checkout@v4
+        with:
+          ref: output
+          fetch-depth: 1
 
-      - name: Update badges in output branch
+      - name: Download stats badges with cache-busting
+        run: |
+          # Add timestamp for cache-busting
+          TIMESTAMP=$(date +%s)
+          USERNAME="${{ github.repository_owner }}"
+          
+          echo "Downloading badges for user: $USERNAME"
+          
+          # Download readme stats (with retries)
+          for i in {1..3}; do
+            if curl -f -L "https://github-readme-stats.vercel.app/api?username=$USERNAME&theme=dark&show_icons=true&count_private=true&include_all_commits=true&cache_seconds=0&v=$TIMESTAMP" -o readme-stats.svg; then
+              echo "✓ Downloaded readme-stats.svg"
+              break
+            else
+              echo "Attempt $i failed for readme-stats.svg"
+              sleep 5
+            fi
+          done
+          
+          # Download streak stats (with retries and fallback)
+          for i in {1..3}; do
+            if curl -f -L "https://streak-stats.demolab.com?user=$USERNAME&theme=dark&hide_border=false&date_format=M%20j%5B%2C%20Y%5D&v=$TIMESTAMP" -o streak-stats.svg 2>/dev/null; then
+              echo "✓ Downloaded streak-stats.svg"
+              break
+            elif curl -f -L "https://github-readme-streak-stats.herokuapp.com?user=$USERNAME&theme=dark&hide_border=false&date_format=M%20j%5B%2C%20Y%5D&v=$TIMESTAMP" -o streak-stats.svg 2>/dev/null; then
+              echo "✓ Downloaded streak-stats.svg (fallback)"
+              break
+            else
+              echo "Attempt $i failed for streak-stats.svg"
+              sleep 5
+            fi
+          done
+          
+          # Download top langs (with retries)
+          for i in {1..3}; do
+            if curl -f -L "https://github-readme-stats.vercel.app/api/top-langs/?username=$USERNAME&theme=dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact&langs_count=10&cache_seconds=0&v=$TIMESTAMP" -o top-langs.svg; then
+              echo "✓ Downloaded top-langs.svg"
+              break
+            else
+              echo "Attempt $i failed for top-langs.svg"
+              sleep 5
+            fi
+          done
+          
+          echo "Badge generation complete!"
+
+      - name: Commit and push updated badges
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
-          # Copy new badges to root (overwrite old ones)
-          cp -f dist/*.svg . 2>/dev/null || true
-          
-          # Clean up temporary directories if they exist
-          rm -rf dist/ output_tmp/ 2>/dev/null || true
           
           git add *.svg
           
