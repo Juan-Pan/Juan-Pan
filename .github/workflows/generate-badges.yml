@@ -21,6 +21,8 @@ jobs:
           fetch-depth: 1
 
       - name: Download stats badges with cache-busting
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Add timestamp for cache-busting
           TIMESTAMP=$(date +%s)
@@ -39,23 +41,33 @@ jobs:
             fi
           done
           
-          # Download streak stats (with retries and fallback)
+          # Download streak stats using GitHub token (with retries and fallback)
+          # Try demolab first (more reliable)
           for i in {1..3}; do
-            if curl -f -L "https://streak-stats.demolab.com?user=$USERNAME&theme=dark&hide_border=false&date_format=M%20j%5B%2C%20Y%5D&v=$TIMESTAMP" -o streak-stats.svg 2>/dev/null; then
-              echo "✓ Downloaded streak-stats.svg"
-              break
-            elif curl -f -L "https://github-readme-streak-stats.herokuapp.com?user=$USERNAME&theme=dark&hide_border=false&date_format=M%20j%5B%2C%20Y%5D&v=$TIMESTAMP" -o streak-stats.svg 2>/dev/null; then
-              echo "✓ Downloaded streak-stats.svg (fallback)"
-              break
-            else
-              echo "Attempt $i failed for streak-stats.svg"
-              sleep 5
+            # Use token via query param for authentication
+            if curl -f -L "https://streak-stats.demolab.com?user=$USERNAME&theme=dark&hide_border=false&date_format=M%20j%5B%2C%20Y%5D&token=$GITHUB_TOKEN&v=$TIMESTAMP" -o streak-stats.svg 2>/dev/null; then
+              # Check if SVG contains error
+              if ! grep -q "Failed to retrieve" streak-stats.svg 2>/dev/null; then
+                echo "✓ Downloaded streak-stats.svg from demolab"
+                break
+              fi
             fi
+            
+            # Fallback to herokuapp with token
+            if curl -f -L "https://github-readme-streak-stats.herokuapp.com?user=$USERNAME&theme=dark&hide_border=false&token=$GITHUB_TOKEN&v=$TIMESTAMP" -o streak-stats.svg 2>/dev/null; then
+              if ! grep -q "Failed to retrieve" streak-stats.svg 2>/dev/null; then
+                echo "✓ Downloaded streak-stats.svg from herokuapp"
+                break
+              fi
+            fi
+            
+            echo "Attempt $i failed for streak-stats.svg"
+            sleep 5
           done
           
-          # Download top langs (with retries)
+          # Download top langs (with retries and explicit parameters)
           for i in {1..3}; do
-            if curl -f -L "https://github-readme-stats.vercel.app/api/top-langs/?username=$USERNAME&theme=dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact&langs_count=10&cache_seconds=0&v=$TIMESTAMP" -o top-langs.svg; then
+            if curl -f -L "https://github-readme-stats.vercel.app/api/top-langs/?username=$USERNAME&theme=dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact&langs_count=10&exclude_repo=&hide=&cache_seconds=0&v=$TIMESTAMP" -o top-langs.svg; then
               echo "✓ Downloaded top-langs.svg"
               break
             else
@@ -64,7 +76,21 @@ jobs:
             fi
           done
           
-          echo "Badge generation complete!"
+          # Verify files
+          echo ""
+          echo "Verifying downloaded files:"
+          for file in readme-stats.svg streak-stats.svg top-langs.svg; do
+            if [ -f "$file" ]; then
+              size=$(wc -c < "$file")
+              echo "  $file: ${size} bytes"
+              # Check for common error patterns
+              if grep -q "Failed to" "$file" 2>/dev/null; then
+                echo "    ⚠ Warning: Contains error message"
+              fi
+            else
+              echo "  $file: MISSING"
+            fi
+          done
 
       - name: Commit and push updated badges
         run: |
