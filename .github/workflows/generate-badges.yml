@@ -66,8 +66,9 @@ jobs:
           done
           
           # Download top langs (with retries and explicit parameters)
+          # Hide Jupyter Notebook to show actual programming languages
           for i in {1..3}; do
-            if curl -f -L "https://github-readme-stats.vercel.app/api/top-langs/?username=$USERNAME&theme=dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact&langs_count=10&exclude_repo=&hide=&cache_seconds=0&v=$TIMESTAMP" -o top-langs.svg; then
+            if curl -f -L "https://github-readme-stats.vercel.app/api/top-langs/?username=$USERNAME&theme=dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact&langs_count=10&hide=jupyter%20notebook&exclude_repo=&cache_seconds=0&v=$TIMESTAMP" -o top-langs.svg; then
               echo "✓ Downloaded top-langs.svg"
               break
             else
