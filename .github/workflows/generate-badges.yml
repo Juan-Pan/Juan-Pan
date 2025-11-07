@@ -32,10 +32,27 @@ jobs:
         run: |
           curl -sSL "https://github-readme-stats.vercel.app/api/top-langs/?username=${{ github.repository_owner }}&count_private=true&theme=dark&hide_border=false&langs_count=10" -o dist/top-langs.svg
 
-      - name: Push badges to output branch
-        uses: crazy-max/ghaction-github-pages@v3.1.0
-        with:
-          target_branch: output
-          build_dir: dist
+      - name: Commit and push badges to output branch (preserve existing files)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git ls-remote --exit-code --heads origin output; then
+            git fetch origin output:output
+            git checkout output
+          else
+            git checkout --orphan output
+            git rm -rf . || true
+          fi
+          mkdir -p output_tmp
+          cp -r dist/* output_tmp/ || true
+          cp -r output_tmp/* .
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to output branch"
+          else
+            git commit -m "chore: update badges (readme/streak/top-langs)"
+            git push https://${GITHUB_TOKEN}@github.com/${{ github.repository }} output
+          fi
