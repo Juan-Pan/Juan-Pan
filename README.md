@@ -66,12 +66,12 @@
   <table align="center">
     <tr border="none">
       <td width="50%" align="center">
-        <img align="center" src="https://github-readme-stats.vercel.app/api?username=Juan-Pan&theme=dark&show_icons=true&count_private=true" />
+        <img align="center" src="https://raw.githubusercontent.com/Juan-Pan/Juan-Pan/output/readme-stats.svg" />
         <br><br>
-        <img title="🔥 GitHub Streak Stats" alt="Streak Stats" src="https://github-readme-streak-stats.herokuapp.com/?user=Juan-Pan&theme=dark&hide_border=false" />
+        <img title="🔥 GitHub Streak Stats" alt="Streak Stats" src="https://raw.githubusercontent.com/Juan-Pan/Juan-Pan/output/streak-stats.svg" />
       </td>
       <td width="50%" align="center">
-        <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Juan-pan&count_private=true&theme=dark&hide_border=false&langs_count=10"/>
+        <img align="center" src="https://raw.githubusercontent.com/Juan-Pan/Juan-Pan/output/top-langs.svg"/>
       </td>
     </tr>
   </table>
