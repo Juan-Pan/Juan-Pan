@@ -23,7 +23,7 @@ jobs:
     steps:
       # Checkout the repository
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Generate the snake animation
       - name: generate github-contribution-grid-snake.svg
@@ -34,31 +34,29 @@ jobs:
             dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
           
-      # Merge generated files into the output branch (preserve existing files)
-      - name: Commit and push generated snake to output branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Checkout output branch and merge files
+      - name: Checkout output branch
         run: |
-          set -e
+          git fetch origin output:output || git checkout --orphan output
+          git checkout output
+
+      - name: Update snake in output branch
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          # fetch output branch if it exists
-          if git ls-remote --exit-code --heads origin output; then
-            git fetch origin output:output
-            git checkout output
-          else
-            git checkout --orphan output
-            git rm -rf . || true
-          fi
-          # copy generated files into branch root (overwrite only those files)
-          mkdir -p output_tmp
-          cp -r dist/* output_tmp/ || true
-          cp -r output_tmp/* .
-          git add -A
+          
+          # Copy new snake files to root (overwrite old ones)
+          cp -f dist/*.svg . 2>/dev/null || true
+          
+          # Clean up temporary directories if they exist
+          rm -rf dist/ output_tmp/ 2>/dev/null || true
+          
+          git add *.svg
+          
           if git diff --staged --quiet; then
-            echo "No changes to output branch"
+            echo "No changes to snake animation"
           else
-            git commit -m "chore: update github-contribution-grid-snake.svg"
-            git push https://${GITHUB_TOKEN}@github.com/${{ github.repository }} output
+            git commit -m "chore: update snake animation [automated $(date +'%Y-%m-%d %H:%M')]"
+            git push origin output
           fi
 

@@ -2,7 +2,7 @@ name: generate badges
 
 on:
   schedule:
-    - cron: '0 0 * * *' # daily at 00:00 UTC
+    - cron: '0 */6 * * *' # every 6 hours
   workflow_dispatch:
   push:
     branches:
@@ -15,44 +15,98 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Create dist directory
-        run: mkdir -p dist
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
-      - name: Download readme stats
+      - name: Install dependencies
         run: |
-          curl -sSL "https://github-readme-stats.vercel.app/api?username=${{ github.repository_owner }}&theme=dark&show_icons=true&count_private=true" -o dist/readme-stats.svg
+          pip install requests pygithub
 
-      - name: Download streak stats
-        run: |
-          curl -sSL "https://github-readme-streak-stats.herokuapp.com/?user=${{ github.repository_owner }}&theme=dark&hide_border=false" -o dist/streak-stats.svg
-
-      - name: Download top langs
-        run: |
-          curl -sSL "https://github-readme-stats.vercel.app/api/top-langs/?username=${{ github.repository_owner }}&count_private=true&theme=dark&hide_border=false&langs_count=10" -o dist/top-langs.svg
-
-      - name: Commit and push badges to output branch (preserve existing files)
+      - name: Generate stats badges
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: ${{ github.repository_owner }}
         run: |
-          set -e
+          python3 << 'EOFPYTHON'
+          import os
+          import requests
+          from datetime import datetime, timedelta
+          from github import Github
+          import json
+
+          username = os.environ['GITHUB_USERNAME']
+          token = os.environ['GITHUB_TOKEN']
+          g = Github(token)
+          user = g.get_user(username)
+
+          # Fetch user stats
+          total_stars = sum([repo.stargazers_count for repo in user.get_repos()])
+          total_commits = 0
+          total_prs = 0
+          total_issues = 0
+          
+          # Get contribution stats (approximate from recent activity)
+          repos = list(user.get_repos(affiliation='owner'))
+          for repo in repos[:20]:  # limit to avoid rate limits
+              try:
+                  commits = repo.get_commits(author=user, since=datetime.now() - timedelta(days=365))
+                  total_commits += commits.totalCount
+              except:
+                  pass
+
+          # Download pre-rendered badges from reliable sources
+          os.makedirs('dist', exist_ok=True)
+          
+          # Use github-readme-stats (vercel) with cache-busting
+          timestamp = int(datetime.now().timestamp())
+          
+          stats_url = f"https://github-readme-stats.vercel.app/api?username={username}&theme=dark&show_icons=true&count_private=true&include_all_commits=true&cache_seconds=1800&t={timestamp}"
+          streak_url = f"https://github-readme-streak-stats.herokuapp.com?user={username}&theme=dark&hide_border=false&date_format=M%20j%5B%2C%20Y%5D&cache_seconds=1800&t={timestamp}"
+          langs_url = f"https://github-readme-stats.vercel.app/api/top-langs/?username={username}&theme=dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact&langs_count=10&cache_seconds=1800&t={timestamp}"
+          
+          # Download with retries
+          for name, url in [('readme-stats.svg', stats_url), ('streak-stats.svg', streak_url), ('top-langs.svg', langs_url)]:
+              for attempt in range(3):
+                  try:
+                      r = requests.get(url, timeout=30)
+                      if r.status_code == 200:
+                          with open(f'dist/{name}', 'wb') as f:
+                              f.write(r.content)
+                          print(f"✓ Downloaded {name}")
+                          break
+                  except Exception as e:
+                      print(f"Attempt {attempt+1} failed for {name}: {e}")
+                      if attempt == 2:
+                          print(f"✗ Failed to download {name}")
+          
+          print("Badge generation complete!")
+          EOFPYTHON
+
+      - name: Checkout output branch
+        run: |
+          git fetch origin output:output || git checkout --orphan output
+          git checkout output
+
+      - name: Update badges in output branch
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git ls-remote --exit-code --heads origin output; then
-            git fetch origin output:output
-            git checkout output
-          else
-            git checkout --orphan output
-            git rm -rf . || true
-          fi
-          mkdir -p output_tmp
-          cp -r dist/* output_tmp/ || true
-          cp -r output_tmp/* .
-          git add -A
+          
+          # Copy new badges to root (overwrite old ones)
+          cp -f dist/*.svg . 2>/dev/null || true
+          
+          # Clean up temporary directories if they exist
+          rm -rf dist/ output_tmp/ 2>/dev/null || true
+          
+          git add *.svg
+          
           if git diff --staged --quiet; then
-            echo "No changes to output branch"
+            echo "No changes to badges"
           else
-            git commit -m "chore: update badges (readme/streak/top-langs)"
-            git push https://${GITHUB_TOKEN}@github.com/${{ github.repository }} output
+            git commit -m "chore: update stats badges [automated $(date +'%Y-%m-%d %H:%M')]"
+            git push origin output
           fi
