@@ -29,6 +29,7 @@
 
   ![C](https://img.shields.io/badge/C%20-%232370ED.svg?style=for-the-badge&logo=c&logoColor=white)
   ![C++](https://img.shields.io/badge/C++%20-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
+  ![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&labelColor=f5971f&logoColor=007396&logo=java)
   <!--![Python](https://img.shields.io/badge/Python%20-%2314354C.svg?style=for-the-badge&logo=python&logoColor=white)-->
 
 <br>   
@@ -41,6 +42,8 @@
   ![Google](https://img.shields.io/badge/google-%234285F4.svg?style=for-the-badge&logo=google&logoColor=white)
   ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
   ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+  ![GitKraken](https://img.shields.io/badge/GitKraken-179287?style=for-the-badge&labelColor=1A1A2C&logoColor=179287&logo=gitkraken)
+  ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&labelColor=F05032&logoColor=ffffff&logo=git)
 
 <br>
 
