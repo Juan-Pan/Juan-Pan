@@ -150,7 +150,7 @@
           data-testid="lang-progress"
           x="213.86"
           y="0"
-          width="10.99"
+          width="11"
           height="8"
           fill="#b07219"
         />
@@ -158,7 +158,7 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="224.85000000000002"
+          x="224.86"
           y="0"
           width="16.81"
           height="8"
@@ -168,7 +168,7 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="231.66000000000003"
+          x="231.67000000000002"
           y="0"
           width="15.41"
           height="8"
@@ -178,7 +178,7 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="237.07000000000002"
+          x="237.08"
           y="0"
           width="15.21"
           height="8"
@@ -188,7 +188,7 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="242.28000000000003"
+          x="242.29000000000002"
           y="0"
           width="13.83"
           height="8"
@@ -198,7 +198,7 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="246.11000000000004"
+          x="246.12000000000003"
           y="0"
           width="11.76"
           height="8"
@@ -208,7 +208,7 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="247.87000000000003"
+          x="247.88000000000002"
           y="0"
           width="11.07"
           height="8"
@@ -218,7 +218,7 @@
         <rect
           mask="url(#rect-mask)"
           data-testid="lang-progress"
-          x="248.94000000000003"
+          x="248.95000000000002"
           y="0"
           width="11.06"
           height="8"
@@ -266,7 +266,7 @@
     <g class="stagger" style="animation-delay: 450ms">
       <circle cx="5" cy="6" r="5" fill="#555555" />
       <text data-testid="lang-name" x="15" y="10" class='lang-name'>
-        C 2.09%
+        C 2.08%
       </text>
     </g>
   </g><g transform="translate(0, 25)">
